@@ -25,8 +25,8 @@ import { RefreshToken } from './auth/models/refresh-token.model';
         dialect: 'postgres',
         host: configService.get('DB_HOST') || 'localhost',
         port: configService.get('DB_PORT') || 5432,
-        username: configService.get('DB_USER') || 'postgres',
-        password: configService.get('DB_PASSWORD') || '1961qwer',
+        username: configService.get('DB_USER') || '*****',
+        password: configService.get('DB_PASSWORD') || '*****&',
         database: configService.get('DB_NAME') || 'Sait-project',
         autoLoadModels: true, // Автоматическая загрузка моделей
         // synchronize: false, // Отключим автоматическую синхронизацию (используем миграции!)
