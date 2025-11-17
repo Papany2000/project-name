@@ -3,7 +3,7 @@ import { AppConfig } from './config.interface';
 
 const appConfig = registerAs<AppConfig>('app', (): AppConfig => {
   const nodeEnv = process.env.NODE_ENV || 'development';
-  
+
 
   // Получаем значения с fallback значениями
   const jwtSecret = process.env.JWT_SECRET;
@@ -19,7 +19,7 @@ const appConfig = registerAs<AppConfig>('app', (): AppConfig => {
   const apiPort = parseInt(process.env.PORT || '5000', 10);
   const tokenExpiration = process.env.JWT_EXPIRATION || '15m';
 
-  
+
 
   return {
     database: {
@@ -39,4 +39,4 @@ const appConfig = registerAs<AppConfig>('app', (): AppConfig => {
   };
 });
 
-export default appConfig;
+export default appConfig; 

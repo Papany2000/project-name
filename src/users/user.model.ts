@@ -39,6 +39,9 @@ export class User extends Model {
   })
   declare role: UserRole;
 
-  @HasMany(() => RefreshToken)
+  @HasMany(() => RefreshToken, {
+    foreignKey: 'userId',
+    onDelete: 'CASCADE', // ← Каскадное удаление
+  })
   refreshTokens: RefreshToken[];
 }

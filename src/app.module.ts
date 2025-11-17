@@ -23,11 +23,11 @@ import { RefreshToken } from './auth/models/refresh-token.model';
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
         dialect: 'postgres',
-        host: configService.get('DB_HOST') || 'localhost',
-        port: configService.get('DB_PORT') || 5432,
-        username: configService.get('DB_USER') || 'postgres',
-        password: configService.get('DB_PASSWORD') || '1961qwer',
-        database: configService.get('DB_NAME') || 'Sait-project',
+        host: configService.get('POSTGRES_HOST'),
+        port: configService.get('POSTGRES_PORT'),
+        username: configService.get('POSTGRES_USER'),
+        password: configService.get('POSTGRES_PASSWORD'),
+        database: configService.get('POSTGRES_DB'),
         autoLoadModels: true, // Автоматическая загрузка моделей
         // synchronize: false, // Отключим автоматическую синхронизацию (используем миграции!)
         models: [User, RefreshToken],

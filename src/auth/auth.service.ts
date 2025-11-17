@@ -13,7 +13,7 @@ export class AuthService {
     private readonly usersService: UsersService,
     private readonly jwtService: JwtService,
     private readonly refreshTokenRepository: RefreshTokenRepository, // Внедряем репозиторий RefreshToken
-    private readonly configService: ConfigService, // Инъектируйте ConfigService
+    private readonly configService: ConfigService, // Инжектируйте ConfigService
   ) {}
 
   async validateUser(email: string, pass: string): Promise<any> {
@@ -141,27 +141,28 @@ export class AuthService {
     const user = await this.usersService.findOneById(refreshTokenEntity.userId); 
     if (!user) {
       // Если пользователь не найден - возможно он был удален
-      throw new UnauthorizedException('User not found');
+      throw new UnauthorizedException('Пользователь не найден');
     }
 
     //  УДАЛЯЕМ использованный refresh token (ротация токенов)
     // Это важно для безопасности - каждый refresh token можно использовать только один раз
     await this.refreshTokenRepository.delete(refreshToken);
 
-    // 7. Генерируем НОВЫЙ refresh token (долгоживущий)
+    // 7. Генерируем НОВЫЙ acces token 
     const accessToken = await this.generateAccessToken({
       id: user.id,
       email: user.email,
       role: user.role,
     });
 
-    // Optionally generate a new refresh token
+    // сгенерируйте новый refreshToken обновления.
     const newRefreshToken = await this.generateRefreshToken(user);
     return { accessToken, refreshToken: newRefreshToken };
   }
 //======================================================
   private async generateAccessToken(user: any): Promise<string> {
-    const payload = { sub: user.id, email: user.email };
+    const payload = {
+      sub: user.id, email: user.email, role: user.role  };
     const secret = this.configService.get<string>('JWT_SECRET'); // secret получаем из конфига
     if (!secret) {
       console.error('JWT_SECRET is not defined!');
@@ -177,6 +178,7 @@ export class AuthService {
       token: token,
       expiresAt: expiresAt,
       userId: user.id,
+      role: user.role // Добавляем роль пользователя
     };
     await this.refreshTokenRepository.create(refreshTokenEntity); //токен создаётся методом create и сохраняется в бд
     return token;
