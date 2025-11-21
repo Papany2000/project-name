@@ -2,7 +2,7 @@ import { InjectModel } from '@nestjs/sequelize';
 import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateUserDTO } from './dto/create-user.dto';
 import { User } from './user.model';
-import { RefreshToken } from 'src/auth/models/refresh-token.model';
+
 
 @Injectable()
 export class UsersService {
@@ -26,6 +26,7 @@ export class UsersService {
   }
 
   async findOneById(id: number): Promise<User | null> {
+    console.log('id', id)
     return this.userRepository.findOne<User>({ where: { id } });
   }
 

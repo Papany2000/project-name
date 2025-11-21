@@ -15,7 +15,7 @@ export class RefreshTokenRepository {
   }
 
   async findOne(token: string): Promise<RefreshToken | null> {
-    return this.refreshTokenModel.findOne({ where: { token } });
+    return this.refreshTokenModel.findOne({ where: { token }, raw: true });
   }
 
   async delete(token: string): Promise<void> {

@@ -127,6 +127,7 @@ export class AuthService {
   ): Promise<{ accessToken: string; refreshToken?: string }> {
     const refreshTokenEntity =
       await this.refreshTokenRepository.findOne(refreshToken);
+    
     // Если токен не найден в базе - он невалидный
     if (!refreshTokenEntity) {
       throw new UnauthorizedException('Invalid refresh token');

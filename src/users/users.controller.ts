@@ -20,7 +20,6 @@ export class UsersController {
   constructor(private usersService: UsersService) { }
 
   @Get() // ← Добавлен декоратор @Get
-  @Roles('admin') // Только админы могут получать список пользователей
   async getAllUsers() {
     return this.usersService.findAll();
   }
