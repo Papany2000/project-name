@@ -9,6 +9,8 @@ import { AuthModule } from './auth/auth.module';
 import { User } from './users/user.model';
 import { RefreshToken } from './auth/models/refresh-token.model';
 import { VacanciesModule } from './vacancies/vacancies.module';
+import { OporaModule } from './opora/opora.module';
+import { MinioModule } from './minio/minio.module';
 
 
 
@@ -36,7 +38,9 @@ import { VacanciesModule } from './vacancies/vacancies.module';
     }),
     AuthModule,
     UsersModule,
-    VacanciesModule
+    VacanciesModule,
+    MinioModule,
+    OporaModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -5,7 +5,7 @@ import {
   HttpStatus,
   Post,
   UnauthorizedException,
-  UseGuards,
+  
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { CreateUserDTO } from 'src/users/dto/create-user.dto';
