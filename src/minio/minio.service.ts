@@ -1,7 +1,7 @@
 import { Injectable, OnModuleInit, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import * as Minio from 'minio';
-import { Express } from 'express';
+
 
 @Injectable()
 export class MinioService implements OnModuleInit {
