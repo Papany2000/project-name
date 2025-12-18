@@ -11,6 +11,7 @@ import { RefreshToken } from './auth/models/refresh-token.model';
 import { VacanciesModule } from './vacancies/vacancies.module';
 import { OporaModule } from './opora/opora.module';
 import { MinioModule } from './minio/minio.module';
+import { ProjectsModule } from './projects/projects.module';
 
 
 
@@ -41,6 +42,7 @@ import { MinioModule } from './minio/minio.module';
     VacanciesModule,
     MinioModule,
     OporaModule,
+    ProjectsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

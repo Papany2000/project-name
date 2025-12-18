@@ -5,7 +5,7 @@ import { RefreshToken } from 'src/auth/models/refresh-token.model';
 export enum UserRole {
   USER = 'user',
   ADMIN = 'admin',
-  MODERATOR = 'moderator'
+  MANAGER = 'manager'
 }
 
 @Table({
